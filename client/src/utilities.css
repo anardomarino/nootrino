@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
+
+:root{
+	--primary: #000;
+	--secondary: #49bfe0ff;
+	--white: #fff;
+	--black: #000;
+
+	--background: #53daffff;
+
+	--title: 50px;
+}
+
+html {
+	font-family: 'Mandali', sans-serif;
+	background: var(--black);
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.underline {
+  display: inline;
+  position: relative;
+  overflow: hidden;
+}
+
+.underline:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 0;
+  bottom: -1px;
+  margin: 1px;
+  background: var(--secondary);
+  height: 2px;
+  transition: width .5s ease;
+  -webkit-transition: width .2s ease-out;
+}
+
+.underline:hover:after{
+	width: 100%;
+	left: 0;
+	background: var(--secondary);
+}
+
+::selection{
+	background: var(--secondary);
+	color: var(--primary);
+}
+
