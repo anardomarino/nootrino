@@ -11,7 +11,9 @@ const socket = require("./server-socket");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
+
 router.get("/whoami", (req,res) => {
+	console.log(req);
 	if (!req.user) {
 		// not logged in
 		return res.send({});
@@ -27,6 +29,7 @@ router.get("/user", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
 	// no nothing if user not logged in
+	if (req.user) socket.addUser(req.user, socket.getSocketFromSocketID(req.body.socketid));
 	res.send({});
 });
 

@@ -5,9 +5,11 @@ import { socket } from "../client-socket.js";
 import { post, get } from "../utilities";
 
 // pages
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+import Login 	from "./pages/Login";
+import Profile 	from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Loading 	from "./pages/Loading";
+import Functional from "./pages/Functional";
 
 // style
 import "../utilities.css";
@@ -18,15 +20,20 @@ class App extends Component {
 		super(props);
 		this.state = {
 			userId: undefined,
-			page: <></>,
+			username: undefined,
+			page: <Loading />,
 		}
 	}
 
 	componentDidMount(){
-		this.setState({page: <Login handleLogin={this.handleLogin} />});
 		get("/api/whoami").then((user) => {
 			if (user._id) {
-				this.setState({userId : user._id});
+				this.setState({	userId : user._id,
+						page: <Functional handleLogout={this.handleLogout}
+						 username={this.state.userId} />,
+				});
+			}else{
+				this.setState({page: <Login handleLogin={this.handleLogin} />});
 			}
 		});
 	}
@@ -35,9 +42,18 @@ class App extends Component {
 		console.log(`Logged in as ${res.profileObj.name}`);
 		const userToken = res.tokenObj.id_token;
 		post("/api/login", { token: userToken }).then((user) => {
-			this.setState({ userId: user._id });
+			this.setState({ userId: user._id,
+					username: user.name});
+			post("/api/initsocket", {socketid: socket.id});
+			this.setState({page: <Functional handleLogout={this.handleLogout}
+						 username={user.name} />});
 		});
-		this.setState({page: <Profile />});
+	}
+
+	handleLogout = (res) => {
+		this.setState({	userId: undefined,
+				page: <Login handleLogin={this.handleLogin} />});
+		post("/api/logout");
 	}
 
 	render(){

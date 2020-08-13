@@ -1,0 +1,70 @@
+.FloatNav-container{
+	height: 100%;
+	background: var(--blue1);
+	display: absolute;
+	transition: 0.5s cubic-bezier(.23,.6,.8,.02);
+}
+
+#open {
+	width: 20%;
+}
+
+#closed {
+	width: 7%;
+}
+
+.FloatNav-slider{
+	height: 12%;
+	width: 100%;
+	bottom: 0;
+	display: inline-block;
+	background: var(--blue3);
+	border: 0;
+	border-bottom: 2px solid var(--blue1);
+}
+
+.FloatNav-slider:active{
+	background: var(--blue2);
+}
+
+.FloatNav-option{
+	color: var(--white);
+	width: 100%;
+	height: 12%;
+	background: var(--blue1);
+	display: block;
+	border: 0;
+	transition: 0.1s;
+	text-align: center;
+	text-decoration: none;
+}
+
+#active{
+	background: var(--blue3);
+}
+
+.FloatNav-option:hover{
+	background-color: var(--blue3);
+}
+
+.FloatNav-nail {
+	max-width: 50%;
+	max-height: 50%;
+	display: block;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.FloatNav-logo{
+	max-width: 60%;
+	max-height: 60%;
+	margin: 0 auto;
+	transition: 5.5s ease-out;
+}
+
+.FloatNav-google{
+	display: inline-block;
+	position: relative;
+	top: 46%; left: 50%;
+	transform: translate(-50%, -50%);
+}

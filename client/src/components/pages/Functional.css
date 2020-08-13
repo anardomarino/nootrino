@@ -1,0 +1,14 @@
+.Functional-container{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background: var(--white);
+	display: flex;
+	flex-basis: auto;
+}
+
+.Functional-page {
+	width: auto;
+	flex-grow: 1;
+	margin: 0 auto;
+}

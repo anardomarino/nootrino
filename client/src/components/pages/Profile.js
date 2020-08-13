@@ -20,6 +20,14 @@ class Profile extends Component {
 	render(){
 		return(<>
 			<div className="Profile-container">
+			<div className="Profile-header-container">
+			<div className="Profile-pic-container">
+				
+			</div>
+			<div className="Profile-user-name">
+			{this.props.username}
+			</div>
+			</div>
 			Profile
 			</div>
 		</>);
